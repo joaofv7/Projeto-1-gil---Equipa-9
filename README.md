@@ -37,7 +37,7 @@ docs/adr/         decisões de arquitetura
 
 - `main` está sempre pronto a publicar. Ninguém faz push direto para `main`.
 - Cada issue tem um branch: `feat/<nº>-descricao`, `fix/<nº>-descricao` ou `docs/<nº>-descricao`.
-- Abre um PR com `Fecha #<nº>`. A CI tem de passar e o dono da pasta (ver `.github/CODEOWNERS`) tem de aprovar.
+- Abre um PR com `Closes #<nº>` na descrição (tem de ser em inglês para o GitHub fechar o issue no merge). A CI tem de passar e o dono da pasta (ver `.github/CODEOWNERS`) tem de aprovar.
 - Faz merge com *squash*.
 
 ## Segredos

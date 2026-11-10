@@ -2,7 +2,8 @@
 
 <!-- Uma ou duas frases. -->
 
-Fecha #
+<!-- Em inglês, para o GitHub fechar o issue no merge: -->
+Closes #
 
 ## Como testar
 
