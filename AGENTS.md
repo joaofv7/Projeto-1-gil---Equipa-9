@@ -62,6 +62,7 @@ docs/adr/         decisões de arquitetura
 - Cada alteração corresponde a um issue (#28–#51). Lê o issue e respeita os critérios de aceitação e as dependências ("Depende de").
 - Branch por issue: `feat/<nº>-descricao`, `fix/<nº>-descricao` ou `docs/<nº>-descricao`.
 - **Nunca faças push para `main`** nem force-push. Abre PR com `Closes #<nº>` (em inglês, senão o GitHub não fecha o issue) e preenche o template.
+- **Nunca apagues branches**, nem depois do merge: o professor avalia o trabalho de cada issue pelos branches. Faz merge sem `--delete-branch` e não ligues a opção "Automatically delete head branches" do GitHub.
 - Antes de commit: `npm run check` e `npm run build` têm de passar.
 - Commits e PRs em português, curtos e no imperativo ("Adiciona página Preços").
 - Decisões técnicas novas ou contrárias ao ADR 0001 → novo ficheiro `docs/adr/000N-titulo.md`, não uma alteração silenciosa.
