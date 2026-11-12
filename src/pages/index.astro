@@ -1,17 +1,443 @@
 ---
+import Base from '../layouts/Base.astro';
+
+// Textos provisórios, tirados de docs/marca.md. O copy final vem do #37.
+const pilares = [
+	{
+		titulo: 'Encontre em minutos o que levaria horas a ouvir',
+		texto:
+			'Pesquise uma palavra numa gravação de várias horas e salte para o segundo exato em que foi dita. Cada frase está ligada ao áudio original, para confirmar o que ouviu.',
+	},
+	{
+		titulo: 'Saiba sempre quem disse o quê',
+		texto:
+			'O texto vem separado por interveniente. Os rótulos automáticos passam a nomes reais, como «Meritíssimo Juiz» ou «Testemunha João», e acompanham a exportação para Word ou PDF.',
+	},
+	{
+		titulo: 'O sigilo profissional fica intacto',
+		texto:
+			'O áudio é processado em servidores dedicados na União Europeia, nunca passa por serviços públicos de inteligência artificial e não é usado para treinar modelos.',
+	},
+];
+
+const passos = [
+	{ titulo: 'Carregue a gravação', texto: 'Ficheiros de várias horas, em MP3, WAV e outros formatos. Se a rede falhar, o envio continua de onde parou.' },
+	{ titulo: 'Deixe o Auditus trabalhar', texto: 'O ficheiro é encriptado e processado em segundo plano. Pode fechar a janela: recebe um email quando terminar.' },
+	{ titulo: 'Reveja e pesquise', texto: 'Leia o texto ao lado do áudio, pesquise palavras-chave e atribua nomes a cada interveniente.' },
+	{ titulo: 'Exporte e elimine', texto: 'Descarregue em Word ou PDF com formato de ata e elimine os dados de forma definitiva.' },
+];
+
+const garantias = [
+	'Processamento em servidores dedicados na União Europeia',
+	'Nenhum ficheiro é enviado para APIs públicas de IA',
+	'Os seus dados nunca treinam modelos',
+	'Encriptação dos ficheiros guardados',
+	'Eliminação definitiva a pedido ou automática',
+];
 ---
 
-<html lang="pt-PT">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Auditus</title>
-	</head>
-	<body>
-		<h1>Auditus</h1>
-		<p>Site em construção.</p>
-	</body>
-</html>
+<Base
+	title="Auditus — De horas de audiência a minutos de leitura"
+	description="Transcrição de audiências com identificação de intervenientes, pesquisa e timestamps, processada na União Europeia com sigilo profissional."
+>
+	<section class="heroi" aria-labelledby="titulo-heroi">
+		<div class="contentor heroi-grelha">
+			<div>
+				<p class="sobretitulo">Transcrição jurídica para Portugal</p>
+				<h1 id="titulo-heroi">De horas de audiência a minutos de leitura.</h1>
+				<p class="introducao">
+					O Auditus converte gravações de audiências e inquirições em texto pesquisável, separado por interveniente e ligado ao segundo exato do áudio. Afinado para português de Portugal, sem que os ficheiros dos seus clientes saiam da Europa.
+				</p>
+				<div class="acoes">
+					<a class="botao botao-principal" href="#pedir-demo">Pedir demonstração</a>
+					<a class="botao botao-secundario" href="#como-funciona">Ver como funciona</a>
+				</div>
+				<ul class="selos" aria-label="Garantias">
+					<li>Processado na UE</li>
+					<li>Sem IA de terceiros</li>
+					<li>Retenção zero</li>
+				</ul>
+			</div>
+
+			<figure class="transcricao">
+				<figcaption>
+					<span>Processo 283 · Audiência de julgamento</span>
+					<span class="pesquisa">Pesquisa: «nove e meia»</span>
+				</figcaption>
+				<ol>
+					<li>
+						<span class="tempo">02:14:12</span>
+						<span class="quem">Mandatária do Autor</span>
+						<p>A testemunha confirma que viu o veículo antes das dez horas?</p>
+					</li>
+					<li class="atual">
+						<span class="tempo">02:14:35</span>
+						<span class="quem">Testemunha João</span>
+						<p>Sim, eram umas <mark>nove e meia</mark>, talvez um pouco antes.</p>
+					</li>
+					<li>
+						<span class="tempo">02:14:51</span>
+						<span class="quem">Meritíssimo Juiz</span>
+						<p>Há pouco disse que só chegou ao local depois das dez.</p>
+					</li>
+				</ol>
+				<p class="aviso">Exemplo fictício.</p>
+			</figure>
+		</div>
+	</section>
+
+	<section class="seccao seccao-alt" aria-labelledby="titulo-historia">
+		<div class="contentor historia">
+			<h2 id="titulo-historia">Três horas de audiência. Uma frase decisiva.</h2>
+			<p>
+				A Dra. Maria acabou de sair de uma audiência de julgamento que durou três horas. Sabe que a testemunha de defesa se contradisse num pormenor crucial, algures na segunda hora, mas não sabe o minuto exato nem as palavras usadas.
+			</p>
+			<p>
+				Antes, isso significava uma tarde a ouvir, parar e voltar atrás. Com o Auditus, carrega a gravação ao chegar ao escritório, pesquisa a palavra-chave, encontra a frase às 02:14:35, ouve só esse excerto e confirma a contradição. <strong>Em dez minutos, com o sigilo profissional garantido.</strong>
+			</p>
+		</div>
+	</section>
+
+	<section class="seccao" aria-labelledby="titulo-pilares">
+		<div class="contentor">
+			<h2 id="titulo-pilares">Feito para quem trabalha com gravações de audiências</h2>
+			<ul class="grelha-3">
+				{
+					pilares.map((p) => (
+						<li class="cartao">
+							<h3>{p.titulo}</h3>
+							<p>{p.texto}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section id="como-funciona" class="seccao seccao-alt" aria-labelledby="titulo-como">
+		<div class="contentor">
+			<h2 id="titulo-como">Como funciona</h2>
+			<ol class="passos">
+				{
+					passos.map((p) => (
+						<li>
+							<h3>{p.titulo}</h3>
+							<p>{p.texto}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section id="seguranca" class="seccao" aria-labelledby="titulo-seguranca">
+		<div class="contentor seguranca">
+			<div>
+				<h2 id="titulo-seguranca">Os ficheiros dos seus clientes nunca saem da Europa</h2>
+				<p class="introducao">
+					Gravações de audiências contêm informação protegida pelo sigilo profissional. Por isso, o Auditus não envia áudio para serviços de IA de terceiros: todo o processamento acontece em infraestrutura dedicada na União Europeia.
+				</p>
+			</div>
+			<ul class="garantias">
+				{garantias.map((g) => <li>{g}</li>)}
+			</ul>
+		</div>
+	</section>
+
+	<section class="seccao seccao-alt" aria-labelledby="titulo-objetivos">
+		<div class="contentor">
+			<h2 id="titulo-objetivos">Os nossos objetivos de qualidade</h2>
+			<dl class="objetivos">
+				<div>
+					<dt>&lt; 9 %</dt>
+					<dd>de erro em vocabulário jurídico português</dd>
+				</div>
+				<div>
+					<dt>&lt; ⅓</dt>
+					<dd>da duração do áudio para ter o texto pronto</dd>
+				</div>
+			</dl>
+			<p class="nota">Objetivos de desenvolvimento do produto, não garantias contratuais.</p>
+		</div>
+	</section>
+
+	<section id="pedir-demo" class="seccao cta" aria-labelledby="titulo-demo">
+		<div class="contentor">
+			<h2 id="titulo-demo">Veja o Auditus a funcionar</h2>
+			<p class="introducao">
+				Mostramos o Auditus com uma gravação de exemplo, sem usar dados dos seus clientes. O formulário de pedido de demonstração está a ser preparado.
+			</p>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.heroi {
+		padding-block: clamp(3rem, 7vw, 5.5rem);
+	}
+
+	.heroi-grelha {
+		display: grid;
+		gap: 3rem;
+		align-items: center;
+	}
+
+	@media (min-width: 60rem) {
+		.heroi-grelha {
+			grid-template-columns: 1.1fr 1fr;
+		}
+	}
+
+	.sobretitulo {
+		color: var(--cor-destaque);
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		font-size: 0.85rem;
+	}
+
+	.acoes {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-block: 1.75rem;
+	}
+
+	.selos {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.selos li {
+		padding: 0.3rem 0.8rem;
+		border-radius: 999px;
+		background: var(--cor-marca-claro);
+		color: var(--cor-marca);
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+
+	.transcricao {
+		margin: 0;
+		background: var(--cor-superficie);
+		border: 1px solid var(--cor-borda);
+		border-radius: calc(var(--raio) * 2);
+		box-shadow: 0 1rem 2.5rem rgb(20 35 60 / 0.08);
+		overflow: hidden;
+	}
+
+	.transcricao figcaption {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.5rem;
+		padding: 0.9rem 1.25rem;
+		background: var(--cor-marca);
+		color: #fff;
+		font-size: 0.9rem;
+	}
+
+	.pesquisa {
+		padding: 0.1rem 0.6rem;
+		border-radius: var(--raio);
+		background: rgb(255 255 255 / 0.15);
+	}
+
+	.transcricao ol {
+		margin: 0;
+		padding: 0.5rem 0;
+		list-style: none;
+	}
+
+	.transcricao li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0 0.75rem;
+		padding: 0.75rem 1.25rem;
+		border-left: 4px solid transparent;
+	}
+
+	.transcricao li.atual {
+		background: var(--cor-destaque-fundo);
+		border-left-color: var(--cor-destaque);
+	}
+
+	.tempo {
+		font-family: var(--fonte-mono);
+		font-size: 0.85rem;
+		color: var(--cor-destaque);
+	}
+
+	.quem {
+		font-weight: 600;
+		font-size: 0.9rem;
+	}
+
+	.transcricao li p {
+		grid-column: 2;
+		margin: 0.2rem 0 0;
+	}
+
+	mark {
+		background: #f2d39a;
+		color: inherit;
+		padding: 0 0.15rem;
+	}
+
+	.aviso {
+		margin: 0;
+		padding: 0.5rem 1.25rem 0.9rem;
+		font-size: 0.8rem;
+		color: var(--cor-texto-suave);
+	}
+
+	.historia {
+		max-width: 46rem;
+	}
+
+	.grelha-3 {
+		display: grid;
+		gap: 1.5rem;
+		margin: 2rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 50rem) {
+		.grelha-3 {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.cartao {
+		padding: 1.75rem;
+		background: var(--cor-superficie);
+		border: 1px solid var(--cor-borda);
+		border-top: 4px solid var(--cor-destaque);
+		border-radius: var(--raio);
+	}
+
+	.cartao p {
+		margin: 0;
+		color: var(--cor-texto-suave);
+	}
+
+	.passos {
+		display: grid;
+		gap: 1.5rem;
+		margin: 2rem 0 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: passo;
+	}
+
+	@media (min-width: 50rem) {
+		.passos {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	.passos li {
+		counter-increment: passo;
+	}
+
+	.passos li::before {
+		content: counter(passo);
+		display: grid;
+		place-items: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		margin-bottom: 1rem;
+		border-radius: 50%;
+		background: var(--cor-marca);
+		color: #fff;
+		font-weight: 700;
+	}
+
+	.passos p {
+		color: var(--cor-texto-suave);
+	}
+
+	.seguranca {
+		display: grid;
+		gap: 2rem;
+		align-items: center;
+	}
+
+	@media (min-width: 55rem) {
+		.seguranca {
+			grid-template-columns: 1.2fr 1fr;
+		}
+	}
+
+	.garantias {
+		margin: 0;
+		padding: 1.75rem;
+		list-style: none;
+		background: var(--cor-marca);
+		color: #fff;
+		border-radius: calc(var(--raio) * 2);
+	}
+
+	.garantias li {
+		padding: 0.55rem 0 0.55rem 2rem;
+		position: relative;
+	}
+
+	.garantias li::before {
+		content: '✓';
+		position: absolute;
+		left: 0;
+		color: #f2d39a;
+		font-weight: 700;
+	}
+
+	.objetivos {
+		display: grid;
+		gap: 1.5rem;
+		margin: 2rem 0 1rem;
+	}
+
+	@media (min-width: 40rem) {
+		.objetivos {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.objetivos div {
+		padding: 1.5rem;
+		border: 1px solid var(--cor-borda);
+		border-radius: var(--raio);
+		background: var(--cor-fundo);
+	}
+
+	.objetivos dt {
+		font-family: var(--fonte-titulos);
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: var(--cor-marca);
+	}
+
+	.objetivos dd {
+		margin: 0;
+		color: var(--cor-texto-suave);
+	}
+
+	.nota {
+		font-size: 0.9rem;
+		color: var(--cor-texto-suave);
+	}
+
+	.cta {
+		text-align: center;
+		background: var(--cor-marca-claro);
+	}
+
+	.cta .introducao {
+		margin-inline: auto;
+	}
+</style>

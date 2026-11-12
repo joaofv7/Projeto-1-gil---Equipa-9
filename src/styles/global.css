@@ -1,0 +1,141 @@
+/* Tokens provisórios: o design system definitivo vem do #33. */
+:root {
+	--cor-fundo: #fbfaf7;
+	--cor-superficie: #ffffff;
+	--cor-texto: #1b2430;
+	--cor-texto-suave: #4a5566;
+	--cor-marca: #14233c;
+	--cor-marca-claro: #e8ecf3;
+	--cor-destaque: #8a5a12;
+	--cor-destaque-fundo: #f6ecd9;
+	--cor-borda: #dcdfe5;
+
+	--fonte-texto: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--fonte-titulos: Georgia, "Times New Roman", serif;
+	--fonte-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+	--largura: 72rem;
+	--raio: 0.5rem;
+	--espaco: clamp(3.5rem, 8vw, 6rem);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+body {
+	margin: 0;
+	background: var(--cor-fundo);
+	color: var(--cor-texto);
+	font-family: var(--fonte-texto);
+	font-size: 1.0625rem;
+	line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--fonte-titulos);
+	font-weight: 600;
+	line-height: 1.2;
+	color: var(--cor-marca);
+	margin: 0 0 1rem;
+}
+
+h1 {
+	font-size: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+h2 {
+	font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+h3 {
+	font-size: 1.25rem;
+}
+
+p {
+	margin: 0 0 1rem;
+}
+
+a {
+	color: var(--cor-marca);
+}
+
+:focus-visible {
+	outline: 3px solid var(--cor-destaque);
+	outline-offset: 3px;
+}
+
+.contentor {
+	width: min(100% - 2.5rem, var(--largura));
+	margin-inline: auto;
+}
+
+.seccao {
+	padding-block: var(--espaco);
+}
+
+.seccao-alt {
+	background: var(--cor-superficie);
+	border-block: 1px solid var(--cor-borda);
+}
+
+.introducao {
+	max-width: 42rem;
+	color: var(--cor-texto-suave);
+	font-size: 1.125rem;
+}
+
+.botao {
+	display: inline-block;
+	padding: 0.8rem 1.4rem;
+	border-radius: var(--raio);
+	border: 2px solid var(--cor-marca);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.botao-principal {
+	background: var(--cor-marca);
+	color: #fff;
+}
+
+.botao-principal:hover {
+	background: #0b1628;
+}
+
+.botao-secundario {
+	background: transparent;
+	color: var(--cor-marca);
+}
+
+.botao-secundario:hover {
+	background: var(--cor-marca-claro);
+}
+
+.saltar {
+	position: absolute;
+	left: 1rem;
+	top: -4rem;
+	padding: 0.5rem 1rem;
+	background: var(--cor-marca);
+	color: #fff;
+	z-index: 10;
+}
+
+.saltar:focus {
+	top: 1rem;
+}

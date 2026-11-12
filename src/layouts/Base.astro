@@ -1,0 +1,118 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="pt-PT">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<a class="saltar" href="#conteudo">Saltar para o conteúdo</a>
+
+		<header class="cabecalho">
+			<div class="contentor cabecalho-interior">
+				<a class="logotipo" href="/" aria-label="Auditus, página inicial">Auditus</a>
+				<nav aria-label="Principal">
+					<ul>
+						<li><a href="/#como-funciona">Como funciona</a></li>
+						<li><a href="/#seguranca">Segurança</a></li>
+						<li><a class="botao botao-principal" href="/#pedir-demo">Pedir demonstração</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main id="conteudo">
+			<slot />
+		</main>
+
+		<footer class="rodape">
+			<div class="contentor rodape-interior">
+				<p><strong>Auditus</strong> · Transcrição jurídica com sigilo profissional</p>
+				<p>Processamento em servidores dedicados na União Europeia.</p>
+				<p class="rodape-nota">© {new Date().getFullYear()} Auditus. Site em construção.</p>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style>
+	.cabecalho {
+		background: var(--cor-superficie);
+		border-bottom: 1px solid var(--cor-borda);
+	}
+
+	.cabecalho-interior {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.5rem;
+		align-items: center;
+		justify-content: space-between;
+		padding-block: 0.9rem;
+	}
+
+	.logotipo {
+		font-family: var(--fonte-titulos);
+		font-size: 1.5rem;
+		font-weight: 700;
+		text-decoration: none;
+		color: var(--cor-marca);
+	}
+
+	nav ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.5rem;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	nav a:not(.botao) {
+		color: var(--cor-texto);
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	nav a:not(.botao):hover {
+		text-decoration: underline;
+	}
+
+	nav .botao {
+		padding: 0.55rem 1rem;
+	}
+
+	.rodape {
+		background: var(--cor-marca);
+		color: #dfe4ec;
+		padding-block: 2.5rem;
+		font-size: 0.95rem;
+	}
+
+	.rodape-interior p {
+		margin: 0 0 0.4rem;
+	}
+
+	.rodape strong {
+		color: #fff;
+	}
+
+	.rodape-nota {
+		margin-top: 1rem !important;
+		color: #b8c1cf;
+	}
+</style>
